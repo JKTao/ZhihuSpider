@@ -9,4 +9,6 @@ development/
 dist/
 __pycache__/
 .idea/
+.vscode/
+zhihu/.vscode/
 Zhihu_Spider.egg-info/
