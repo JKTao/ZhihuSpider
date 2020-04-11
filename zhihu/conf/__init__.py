@@ -48,12 +48,12 @@ class Config:
 
     def default_wh(self):
         try:
-            # 配置文件中不包含默认路径能保证其正确性，其必然是"Documents\zhihuSpider"
+            # 配置文件中不包含默认路径能保证其正确性，其必然是"Documents/zhihuSpider"
             dw = self.get_setting('running/default_wh')
             assert dw != ''
             return dw
         except (KeyError, AssertionError):
-            dfp = os.path.join(os.path.expanduser('~'), r'Documents\zhihuSpider')
+            dfp = os.path.join(os.path.expanduser('~'), r'Documents/zhihuSpider')
             self.setting('running/default_wh', dfp)
             try:
                 os.makedirs(dfp)

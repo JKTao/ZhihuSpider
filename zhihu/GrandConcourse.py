@@ -94,5 +94,5 @@ def main():
 
 
 if __name__ == '__main__':
-    sys.argv = ['zhihu', '-u', 'https://www.zhihu.com/question/371430700', '-dg']
+    # sys.argv = ['zhihu', '-u', 'https://www.zhihu.com/question/371430700', '-dg']
     main()

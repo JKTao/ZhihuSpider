@@ -1,4 +1,5 @@
 import os
+import subprocess
 import platform
 import time
 from http import cookiejar
@@ -137,9 +138,9 @@ class ZhihuAccount:
             foo.write(image)
 
         if platform.system() == 'Darwin':
-            os.subprocess.call(['open', image_file])
+            subprocess.call(['open', image_file])
         elif platform.system() == 'Linux':
-            os.subprocess.call(['xdg-open', image_file])
+            subprocess.call(['code', image_file])
         else:
             os.startfile(image_file)
 
