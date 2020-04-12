@@ -36,7 +36,7 @@ class ItemManage(Crawler):
 
         def get_json_data(ofs):
             resp = self.get_network_data_package(self.item_name, self.item_id, offset=ofs)
-            resp.encoding = 'utf8'
+            resp.encoding = resp.apparent_encoding
             return resp.json()
 
         jsd = get_json_data(offset)
@@ -239,7 +239,7 @@ class CollectionManage(ItemManage):
         page = 1
         while page <= page_totals:
             resp = self.get_network_data_package(self.item_name, self.item_id, page=page)
-            resp.encoding = 'utf8'
+            resp.encoding = resp.apparent_encoding
             page += 1
             yield func(resp.text)
 

@@ -50,7 +50,8 @@ class Document:
     @classmethod
     def item2html(cls, cont, meta):
         mushroom = html.Mushroom(cont, meta, css_output=config.get_setting('running/css_output'))
-        with open(format_file_name('html', meta.title, str(meta.voteup), meta.author), 'w',
+        title = meta.title if len(meta.title) <= 50 else meta.title[:50]
+        with open(format_file_name('html', title, str(meta.voteup), meta.author), 'w',
                   encoding='utf8') as foo:
             mushroom.write_down(foo)
         if config.get_setting('running/css_output'):
