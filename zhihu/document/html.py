@@ -301,7 +301,7 @@ class Parsing:
 
     def arouse_error(self, max_loop):
         """检查解析过程是否正常，不正常将引发ValueError"""
-        if max_loop == 0:
+        if max_loop == 0 and self._ofs < len(self._tag):
             w = 'While loop go beyond the max_loop(%d). ' \
                 'The following words is showed below line.' % len(self._tag)
             raise ValueError('%s\n%s\n\n%s' % (w, '-' * (len(w) + 12), self._tag[self._ofs:]))
@@ -313,7 +313,7 @@ class Parsing:
         mark = re.search(self.mark, stg)
         while mark:
             value = self._marks_value.get(mark.group(1), '##')
-            stg = re.sub(self.mark, value, stg, 1)
+            stg = re.sub(self.mark, re.escape(value), stg, 1)
             mark = re.search(self.mark, stg)
         return stg
 
